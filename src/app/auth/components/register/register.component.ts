@@ -8,7 +8,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { registerAction } from '@auth/store/actions';
-import { isSubmittingSelector } from '@auth/store/selectors';
+import {
+  isSubmittingSelector,
+  validationErrorsSelector,
+} from '@auth/store/selectors';
+import { ResponseErrorsInterface } from '@shared/types';
 
 @Component({
   selector: 'rx-register',
@@ -19,6 +23,7 @@ import { isSubmittingSelector } from '@auth/store/selectors';
 export class RegisterComponent implements OnInit {
   public form!: FormGroup;
   public isSubmitting$!: Observable<boolean>;
+  public validationErrors$!: Observable<ResponseErrorsInterface>;
 
   private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _store: Store = inject(Store);
@@ -52,5 +57,7 @@ export class RegisterComponent implements OnInit {
   private _initializeValues(): void {
     // @ts-ignore
     this.isSubmitting$ = this._store.pipe(select(isSubmittingSelector));
+    // @ts-ignore
+    this.validationErrors$ = this._store.pipe(select(validationErrorsSelector));
   }
 }
