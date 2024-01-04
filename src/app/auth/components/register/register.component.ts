@@ -29,18 +29,16 @@ export class RegisterComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    if (this.form.valid) {
-      const {
-        username,
-        email,
-        password,
-      }: { username: string; email: string; password: string } =
-        this.form.value;
-      this._store.dispatch(
-        registerAction({ request: { username, email, password } })
-      );
-      this.form.reset();
-    }
+    const {
+      username,
+      email,
+      password,
+    }: { username: string; email: string; password: string } = this.form.value;
+
+    this._store.dispatch(
+      registerAction({ request: { username, email, password } })
+    );
+    this.form.reset();
   }
 
   private _initializeForm(): void {
@@ -53,6 +51,6 @@ export class RegisterComponent implements OnInit {
 
   private _initializeValues(): void {
     // @ts-ignore
-    this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
+    this.isSubmitting$ = this._store.pipe(select(isSubmittingSelector));
   }
 }

@@ -9,8 +9,6 @@ import { AuthModule } from '@auth/auth.module';
 import { environment } from '@environments/environment';
 import { API_URL } from '@shared/tokens';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { registerFeatureKey, registerReducer } from '@auth/store/reducers';
-import { RegisterEffect } from '@auth/store/effects/register.effect';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,8 +16,8 @@ import { RegisterEffect } from '@auth/store/effects/register.effect';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    StoreModule.forRoot({ [registerFeatureKey]: registerReducer }, {}),
-    EffectsModule.forRoot([RegisterEffect]),
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [{ provide: API_URL, useValue: environment.api_url }],

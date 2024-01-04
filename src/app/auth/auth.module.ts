@@ -6,6 +6,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '@auth/services';
 import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { RegisterEffect } from '@auth/store/effects';
+import { StoreModule } from '@ngrx/store';
+import { registerFeatureKey, registerReducer } from '@auth/store/reducers';
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -14,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     AuthRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreModule.forFeature(registerFeatureKey, registerReducer),
+    EffectsModule.forFeature([RegisterEffect]),
   ],
   providers: [AuthService],
 })
