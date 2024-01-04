@@ -21,8 +21,8 @@ export class RegisterEffect {
       ofType(registerAction),
       switchMap(({ request }) => {
         return this._authService.register(request).pipe(
-          map((user: CurrentUserInterface) => {
-            return registerSuccessAction({ user });
+          map((response: CurrentUserInterface) => {
+            return registerSuccessAction({ response });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
             return of(
