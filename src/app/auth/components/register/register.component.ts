@@ -19,6 +19,7 @@ import { isSubmittingSelector } from '@auth/store/selectors';
 export class RegisterComponent implements OnInit {
   public form!: FormGroup;
   public isSubmitting$!: Observable<boolean>;
+
   private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _store: Store = inject(Store);
 
@@ -29,7 +30,12 @@ export class RegisterComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.form.valid) {
-      const { username, email, password } = this.form.value;
+      const {
+        username,
+        email,
+        password,
+      }: { username: string; email: string; password: string } =
+        this.form.value;
       this._store.dispatch(
         registerAction({ request: { username, email, password } })
       );

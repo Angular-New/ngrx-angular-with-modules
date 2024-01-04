@@ -21,7 +21,6 @@ export class AuthService {
   public register(
     data: RegisterRequestInterface
   ): Observable<CurrentUserInterface> {
-    console.log('data >>> ', data);
     const url: string = `${this._apiUrl}/users`;
     const body: { user: RegisterRequestInterface } = { user: { ...data } };
 
