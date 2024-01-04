@@ -2,6 +2,13 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
+import { API_URL } from '@shared/tokens';
+import {
+  RegisterRequestInterface,
+  RegisterResponseInterface,
+} from '@auth/types';
+import { CurrentUserInterface } from '@shared/types';
+
 @Injectable({
   providedIn: 'root',
 })
