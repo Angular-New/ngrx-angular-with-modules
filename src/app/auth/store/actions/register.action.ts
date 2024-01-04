@@ -5,7 +5,7 @@ import { CurrentUserInterface } from '@shared/types';
 
 export const registerAction = createAction(
   ActionTypes.Register,
-  props<{ user: RegisterRequestInterface }>()
+  props<{ request: RegisterRequestInterface }>()
 );
 
 export const registerSuccessAction = createAction(

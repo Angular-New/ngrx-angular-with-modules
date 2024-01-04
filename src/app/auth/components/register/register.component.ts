@@ -8,7 +8,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { registerAction } from '@auth/store/actions';
-import { AuthService } from '@auth/services';
 import { isSubmittingSelector } from '@auth/store/selectors';
 
 @Component({
@@ -22,7 +21,6 @@ export class RegisterComponent implements OnInit {
   public isSubmitting$!: Observable<boolean>;
   private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _store: Store = inject(Store);
-  private readonly _authService: AuthService = inject(AuthService);
 
   ngOnInit(): void {
     this._initializeForm();
@@ -30,9 +28,11 @@ export class RegisterComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    if (this.form.value) {
-      this._store.dispatch(registerAction(this.form.value));
-      this._authService.register(this.form.value).subscribe();
+    if (this.form.valid) {
+      const { username, email, password } = this.form.value;
+      this._store.dispatch(
+        registerAction({ request: { username, email, password } })
+      );
       this.form.reset();
     }
   }

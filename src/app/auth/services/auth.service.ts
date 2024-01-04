@@ -9,9 +9,7 @@ import {
 } from '@auth/types';
 import { CurrentUserInterface } from '@shared/types';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AuthService {
   private readonly _apiUrl: string = inject(API_URL);
   private readonly _http: HttpClient = inject(HttpClient);
@@ -23,6 +21,7 @@ export class AuthService {
   public register(
     data: RegisterRequestInterface
   ): Observable<CurrentUserInterface> {
+    console.log('data >>> ', data);
     const url: string = `${this._apiUrl}/users`;
     const body: { user: RegisterRequestInterface } = { user: { ...data } };
 

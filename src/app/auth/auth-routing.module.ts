@@ -4,7 +4,7 @@ import { RegisterComponent } from '@auth/components/register/register.component'
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'register',
     component: RegisterComponent,
   },
 ];

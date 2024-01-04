@@ -1,6 +1,6 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { inject, Injectable } from '@angular/core';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 
 import {
   registerAction,
@@ -18,8 +18,9 @@ export class RegisterEffect {
   _register$ = createEffect(() =>
     this._actions$.pipe(
       ofType(registerAction),
-      switchMap(({ user }) => {
-        return this._authService.register(user).pipe(
+      switchMap(({ request }) => {
+        tap((v) => console.log('tap >>>', v));
+        return this._authService.register(request).pipe(
           map((user: CurrentUserInterface) => {
             return registerSuccessAction({ user });
           }),
