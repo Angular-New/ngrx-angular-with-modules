@@ -30,18 +30,17 @@ export const registerReducer = createReducer(
     registerSuccessAction,
     (state: AuthStateInterface, { response }): AuthStateInterface => ({
       ...state,
-      currentUser: response,
-      isLoggedIn: true,
       isSubmitting: false,
+      isLoggedIn: true,
+      currentUser: response,
     })
   ),
   on(
     registerFailureAction,
     (state: AuthStateInterface, { errors }): AuthStateInterface => ({
       ...state,
-      validationErrors: errors,
-      isLoggedIn: false,
       isSubmitting: false,
+      validationErrors: errors,
     })
   )
 );

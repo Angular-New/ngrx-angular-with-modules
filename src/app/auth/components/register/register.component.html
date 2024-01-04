@@ -6,9 +6,10 @@
         <p class="text-xs-center">
           <a [routerLink]="['/login']">Have an account?</a>
         </p>
-        <!-- block with errors -->
         @if (validationErrors$ | async; as errors) {
-          <div>{{ errors | json }}</div>
+          <rx-backend-error-messages
+            [error-messages]="errors"
+          />
         }
         <form
           (ngSubmit)="onSubmit()"

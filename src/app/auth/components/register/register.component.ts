@@ -23,7 +23,7 @@ import { ResponseErrorsInterface } from '@shared/types';
 export class RegisterComponent implements OnInit {
   public form!: FormGroup;
   public isSubmitting$!: Observable<boolean>;
-  public validationErrors$!: Observable<ResponseErrorsInterface>;
+  public validationErrors$!: Observable<ResponseErrorsInterface | null>;
 
   private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _store: Store = inject(Store);

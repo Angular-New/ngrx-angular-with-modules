@@ -15,5 +15,5 @@ export const isSubmittingSelector = createSelector(
 export const validationErrorsSelector = createSelector(
   registerFeatureSelector,
   (state: AuthStateInterface): ResponseErrorsInterface =>
-    <ResponseErrorsInterface>state.validationErrors || null
+    <ResponseErrorsInterface>state.validationErrors
 );
