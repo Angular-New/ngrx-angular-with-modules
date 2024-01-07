@@ -4,15 +4,18 @@ import { map, Observable } from 'rxjs';
 
 import { API_URL } from '@shared/tokens';
 import {
+  LoginRequestInterface,
   RegisterRequestInterface,
   RegisterResponseInterface,
 } from '@auth/types';
 import { CurrentUserInterface } from '@shared/types';
+import { AuthMapper } from '@auth/services/auth.mapper';
 
 @Injectable()
 export class AuthService {
   private readonly _apiUrl: string = inject(API_URL);
   private readonly _http: HttpClient = inject(HttpClient);
+  private readonly _authMapper: AuthMapper = inject(AuthMapper);
 
   /**
    * Register new user
@@ -26,6 +29,19 @@ export class AuthService {
 
     return this._http
       .post<RegisterResponseInterface>(url, body)
-      .pipe(map((response: RegisterResponseInterface) => response.user));
+      .pipe(map(this._authMapper.getUser));
+  }
+
+  /**
+   * Login existing user
+   * @param data
+   */
+  public login(data: LoginRequestInterface): Observable<CurrentUserInterface> {
+    const url: string = `${this._apiUrl}/users/login`;
+    const body: { user: LoginRequestInterface } = { user: { ...data } };
+
+    return this._http
+      .post<RegisterResponseInterface>(url, body)
+      .pipe(map(this._authMapper.getUser));
   }
 }

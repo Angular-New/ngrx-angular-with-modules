@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '@auth/services';
+import { AuthMapper, AuthService } from '@auth/services';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { RegisterEffect } from '@auth/store/effects';
@@ -24,6 +24,6 @@ import { PersistenceService } from '@shared/services';
     EffectsModule.forFeature([RegisterEffect]),
     BackendErrorMessagesComponent,
   ],
-  providers: [AuthService, PersistenceService],
+  providers: [AuthService, PersistenceService, AuthMapper],
 })
 export class AuthModule {}
