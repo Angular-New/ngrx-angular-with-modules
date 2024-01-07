@@ -9,6 +9,7 @@ import { AuthModule } from '@auth/auth.module';
 import { environment } from '@environments/environment';
 import { API_URL } from '@shared/tokens';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { TopHeaderComponent } from '@shared/components/top-header/top-header.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
+    TopHeaderComponent,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
