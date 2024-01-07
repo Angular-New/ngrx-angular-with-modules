@@ -1,6 +1,6 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { inject, Injectable } from '@angular/core';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 
 import {
   registerAction,
@@ -11,10 +11,12 @@ import { CurrentUserInterface } from '@shared/types';
 import { AuthService } from '@auth/services';
 import { HttpErrorResponse } from '@angular/common/http';
 import { EPersistence, PersistenceService } from '@shared/services';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class RegisterEffect {
   private readonly _actions$ = inject(Actions);
+  private readonly _router: Router = inject(Router);
   private readonly _authService: AuthService = inject(AuthService);
   private readonly _persistenceService: PersistenceService =
     inject(PersistenceService);
@@ -37,5 +39,16 @@ export class RegisterEffect {
         );
       })
     )
+  );
+
+  _registerAfterSuccess = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(registerSuccessAction),
+        tap(() => {
+          this._router.navigateByUrl('/');
+        })
+      ),
+    { dispatch: false }
   );
 }
