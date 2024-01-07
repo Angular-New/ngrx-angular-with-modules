@@ -12,9 +12,10 @@ import { StoreModule } from '@ngrx/store';
 import { registerFeatureKey, registerReducer } from '@auth/store/reducers';
 import { BackendErrorMessagesComponent } from '@shared/components/backend-error-messages/backend-error-messages.component';
 import { PersistenceService } from '@shared/services';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [RegisterComponent, LoginComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
