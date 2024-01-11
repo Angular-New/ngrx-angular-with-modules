@@ -25,7 +25,7 @@ export class AuthService {
     data: RegisterRequestInterface
   ): Observable<CurrentUserInterface> {
     const url: string = `${this._apiUrl}/users`;
-    const body: { user: RegisterRequestInterface } = { user: { ...data } };
+    const body = this._authMapper.getBody(data);
 
     return this._http
       .post<RegisterResponseInterface>(url, body)
@@ -38,7 +38,7 @@ export class AuthService {
    */
   public login(data: LoginRequestInterface): Observable<CurrentUserInterface> {
     const url: string = `${this._apiUrl}/users/login`;
-    const body: { user: LoginRequestInterface } = { user: { ...data } };
+    const body = this._authMapper.getBody(data);
 
     return this._http
       .post<RegisterResponseInterface>(url, body)

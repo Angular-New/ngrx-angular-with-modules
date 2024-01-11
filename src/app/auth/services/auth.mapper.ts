@@ -8,4 +8,8 @@ export class AuthMapper {
   public getUser(data: RegisterResponseInterface): CurrentUserInterface {
     return data.user;
   }
+
+  public getBody<T>(data: T): unknown {
+    return { user: { ...data } };
+  }
 }
