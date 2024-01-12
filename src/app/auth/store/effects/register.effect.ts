@@ -1,17 +1,17 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { inject, Injectable } from '@angular/core';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 
+import { AuthService } from '@auth/services';
 import {
   registerAction,
   registerFailureAction,
   registerSuccessAction,
 } from '@auth/store/actions';
-import { CurrentUserInterface } from '@shared/types';
-import { AuthService } from '@auth/services';
-import { HttpErrorResponse } from '@angular/common/http';
 import { EPersistence, PersistenceService } from '@shared/services';
-import { Router } from '@angular/router';
+import { CurrentUserInterface } from '@shared/types';
 
 @Injectable()
 export class RegisterEffect {

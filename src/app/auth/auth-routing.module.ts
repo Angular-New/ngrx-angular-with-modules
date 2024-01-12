@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
 import { AUTH_ROUTES } from '../routes';
 
 @NgModule({

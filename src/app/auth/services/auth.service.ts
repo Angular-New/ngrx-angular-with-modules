@@ -1,15 +1,15 @@
-import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { Observable, map } from 'rxjs';
 
-import { API_URL } from '@shared/tokens';
+import { AuthMapper } from '@auth/services/auth.mapper';
 import {
   LoginRequestInterface,
   RegisterRequestInterface,
   RegisterResponseInterface,
 } from '@auth/types';
+import { API_URL } from '@shared/tokens';
 import { CurrentUserInterface } from '@shared/types';
-import { AuthMapper } from '@auth/services/auth.mapper';
 
 @Injectable()
 export class AuthService {

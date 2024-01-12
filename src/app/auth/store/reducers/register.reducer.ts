@@ -1,5 +1,5 @@
-import { AuthStateInterface } from '@auth/types';
 import { createReducer, on } from '@ngrx/store';
+
 import {
   loginAction,
   loginFailureAction,
@@ -8,6 +8,7 @@ import {
   registerFailureAction,
   registerSuccessAction,
 } from '@auth/store/actions';
+import { AuthStateInterface } from '@auth/types';
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,

@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+
 import { ActionTypes } from '@auth/store/actions/action.types';
 import { LoginRequestInterface } from '@auth/types';
 import { CurrentUserInterface, ResponseErrorsInterface } from '@shared/types';

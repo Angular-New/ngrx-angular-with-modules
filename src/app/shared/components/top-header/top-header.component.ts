@@ -1,19 +1,20 @@
+import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  inject,
   OnInit,
+  inject,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
-import { CurrentUserInterface } from '@shared/types';
-import { select, Store } from '@ngrx/store';
+
 import {
   currentUserSelector,
   isAnonymousSelector,
   isLoggedInSelector,
 } from '@auth/store/selectors';
+import { CurrentUserInterface } from '@shared/types';
 
 @Component({
   selector: 'rx-top-header',
@@ -34,11 +35,11 @@ export class TopHeaderComponent implements OnInit {
   }
 
   private _initializeValues(): void {
-    // @ts-ignore
+    // @ts-expect-error Some strange type error
     this.isLoggedIn$ = this._store.pipe(select(isLoggedInSelector));
-    // @ts-ignore
+    // @ts-expect-error Some strange type error
     this.currentUser$ = this._store.pipe(select(currentUserSelector));
-    // @ts-ignore
+    // @ts-expect-error Some strange type error
     this.isAnonymous$ = this._store.pipe(select(isAnonymousSelector));
   }
 }

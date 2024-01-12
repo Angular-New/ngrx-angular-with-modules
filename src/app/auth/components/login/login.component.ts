@@ -1,18 +1,19 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  inject,
   OnInit,
+  inject,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { ResponseErrorsInterface } from '@shared/types';
-import { select, Store } from '@ngrx/store';
+
 import { loginAction } from '@auth/store/actions';
 import {
   isSubmittingSelector,
   validationErrorsSelector,
 } from '@auth/store/selectors';
+import { ResponseErrorsInterface } from '@shared/types';
 
 @Component({
   selector: 'rx-login',
@@ -48,9 +49,9 @@ export class LoginComponent implements OnInit {
   }
 
   private _initializeValues(): void {
-    // @ts-ignore
+    // @ts-expect-error Some strange type error
     this.isSubmitting$ = this._store.pipe(select(isSubmittingSelector));
-    // @ts-ignore
+    // @ts-expect-error Some strange type error
     this.validationErrors$ = this._store.pipe(select(validationErrorsSelector));
   }
 }

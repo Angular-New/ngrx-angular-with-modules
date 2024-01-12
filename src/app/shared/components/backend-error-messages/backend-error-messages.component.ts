@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
 import { ResponseErrorsInterface } from '@shared/types';
 
 @Component({

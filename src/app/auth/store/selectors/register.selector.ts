@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { AuthStateInterface } from '@auth/types';
 import {
   CurrentUserInterface,

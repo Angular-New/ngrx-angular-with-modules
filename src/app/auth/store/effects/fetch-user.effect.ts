@@ -1,12 +1,13 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
+
+import { AuthService } from '@auth/services';
 import {
   fetchUserAction,
   fetchUserFailure,
   fetchUserSuccessAction,
 } from '@auth/store/actions';
-import { AuthService } from '@auth/services';
 import { CurrentUserInterface } from '@shared/types';
 
 @Injectable()

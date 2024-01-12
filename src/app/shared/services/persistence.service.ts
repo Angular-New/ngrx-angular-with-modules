@@ -1,4 +1,5 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+
 import { WINDOW } from '@shared/tokens';
 
 export enum EPersistence {
