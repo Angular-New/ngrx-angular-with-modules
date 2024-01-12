@@ -18,7 +18,7 @@ export class PersistenceService {
     }
   }
 
-  public getToken(key: string): unknown {
+  public getToken(key: string): string | null {
     try {
       const data: string = <string>this._window.localStorage.getItem(key);
       return JSON.parse(data);

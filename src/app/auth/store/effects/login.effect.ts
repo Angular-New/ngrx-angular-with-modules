@@ -18,8 +18,7 @@ export class LoginEffect {
   private readonly _actions$ = inject(Actions);
   private readonly _authService: AuthService = inject(AuthService);
   private readonly _router: Router = inject(Router);
-  private readonly _persistenceService: PersistenceService =
-    inject(PersistenceService);
+  private readonly _persistenceService = inject(PersistenceService);
 
   _login$ = createEffect(() =>
     this._actions$.pipe(
