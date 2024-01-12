@@ -7,7 +7,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthMapper, AuthService } from '@auth/services';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
-import { LoginEffect, RegisterEffect } from '@auth/store/effects';
+import {
+  FetchUserEffect,
+  LoginEffect,
+  RegisterEffect,
+} from '@auth/store/effects';
 import { StoreModule } from '@ngrx/store';
 import { registerFeatureKey, registerReducer } from '@auth/store/reducers';
 import { BackendErrorMessagesComponent } from '@shared/components/backend-error-messages/backend-error-messages.component';
@@ -22,7 +26,7 @@ import { LoginComponent } from './components/login/login.component';
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forFeature(registerFeatureKey, registerReducer),
-    EffectsModule.forFeature([RegisterEffect, LoginEffect]),
+    EffectsModule.forFeature([RegisterEffect, LoginEffect, FetchUserEffect]),
     BackendErrorMessagesComponent,
   ],
   providers: [AuthService, PersistenceService, AuthMapper],

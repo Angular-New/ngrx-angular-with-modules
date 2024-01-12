@@ -44,4 +44,12 @@ export class AuthService {
       .post<RegisterResponseInterface>(url, body)
       .pipe(map(this._authMapper.getUser));
   }
+
+  public fetchCurrentUser(): Observable<CurrentUserInterface> {
+    const url: string = `${this._apiUrl}/user`;
+
+    return this._http
+      .get<RegisterResponseInterface>(url)
+      .pipe(map(this._authMapper.getUser));
+  }
 }
