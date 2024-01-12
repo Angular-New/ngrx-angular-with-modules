@@ -1,6 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
 
 import {
+  fetchUserAction,
+  fetchUserFailure,
+  fetchUserSuccessAction,
   loginAction,
   loginFailureAction,
   loginSuccessAction,
@@ -12,6 +15,7 @@ import { AuthStateInterface } from '@auth/types';
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
+  isLoading: false,
   currentUser: null,
   isLoggedIn: null,
   validationErrors: null,
@@ -69,6 +73,31 @@ export const registerReducer = createReducer(
       ...state,
       isSubmitting: false,
       validationErrors: errors,
+    })
+  ),
+  on(
+    fetchUserAction,
+    (state: AuthStateInterface): AuthStateInterface => ({
+      ...state,
+      isLoading: true,
+    })
+  ),
+  on(
+    fetchUserSuccessAction,
+    (state: AuthStateInterface, { response }): AuthStateInterface => ({
+      ...state,
+      isLoading: false,
+      isLoggedIn: true,
+      currentUser: response,
+    })
+  ),
+  on(
+    fetchUserFailure,
+    (state: AuthStateInterface): AuthStateInterface => ({
+      ...state,
+      isLoading: false,
+      isLoggedIn: false,
+      currentUser: null,
     })
   )
 );
