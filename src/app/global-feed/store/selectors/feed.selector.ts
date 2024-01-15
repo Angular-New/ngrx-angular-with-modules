@@ -8,17 +8,17 @@ export const feedFeatureSelector = createFeatureSelector<
   FeedStateInterface
 >('feed');
 
-export const isLoadingFeedSelector = createSelector(
-  feedFeatureSelector,
-  (state: FeedStateInterface): boolean => state.isLoading
-);
+// export const isLoadingFeedSelector = createSelector(
+//   feedFeatureSelector,
+//   (state: FeedStateInterface): boolean => state.isLoading
+// );
 
 export const dataFeedSelector = createSelector(
   feedFeatureSelector,
   (state: FeedStateInterface): FeedResponseInterface | null => state.data
 );
 
-export const errorFeedSelector = createSelector(
-  feedFeatureSelector,
-  (state: FeedStateInterface): string | null => state.error
-);
+// export const errorFeedSelector = createSelector(
+//   feedFeatureSelector,
+//   (state: FeedStateInterface): string | null => state.error
+// );

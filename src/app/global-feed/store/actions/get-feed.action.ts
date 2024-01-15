@@ -5,7 +5,7 @@ import { FeedResponseInterface } from '@feed/types';
 
 export const getFeedAction = createAction(
   ActionFeedTypes.Feed,
-  props<{ url: string }>()
+  props<{ request: string }>()
 );
 
 export const getFeedActionSuccess = createAction(
