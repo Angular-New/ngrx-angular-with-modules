@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { AUTH_ROUTES } from './routes';
+import { GLOBAL_FEED } from './routes';
 
 @NgModule({
-  imports: [RouterModule.forChild(AUTH_ROUTES)],
+  imports: [RouterModule.forChild(GLOBAL_FEED)],
   exports: [RouterModule],
 })
-export class AuthRoutingModule {}
+export class GlobalFeedRoutingModule {}
