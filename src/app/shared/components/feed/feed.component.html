@@ -10,7 +10,10 @@
               />
             </a>
             <div class="info">
-              <a [routerLink]="['/profiles', article.author.username]" class="author">
+              <a
+                [routerLink]="['/profiles', article.author.username]"
+                class="author"
+              >
                 {{ article.author.username }}
               </a>
               <span class="date">{{ article.createdAt }}</span>
@@ -19,7 +22,10 @@
               ADD TO FAVORITES
             </div>
           </div>
-          <a [routerLink]="['/articles', article.slug]" class="preview-link">
+          <a
+            [routerLink]="['/articles', article.slug]"
+            class="preview-link"
+          >
             <h1>{{ article.title }}</h1>
             <p>{{ article.description }}</p>
             <span>Read more..</span>
@@ -27,7 +33,12 @@
           </a>
       </div>
     }
-    PAGINATION
+    <rx-pagination
+      [total-articles]="(feed$ | async)?.articlesCount"
+      [limit-articles]="feedsLimit"
+      [url-articles]="baseUrl"
+      [current-page]="currentPage"
+    />
 } @loading (minimum 2s) {
     <rx-loading />
 } @error {
